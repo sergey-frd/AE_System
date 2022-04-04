@@ -49,3 +49,25 @@ function readXmlae_Dima_22_7_br_1(pathRrXml)
     return xmlString;
 }
 
+
+//===================================================
+function xmlPath2Win(filePathUrl) 
+{
+
+    var fpList = filePathUrl.split('\/');
+
+    var winPath = '';
+    for(var ii = 0; ii < fpList.length; ii++) {
+
+        if(fpList[ii] == "file:")     {continue;}
+        if(fpList[ii] == "localhost") {continue;}
+        if(fpList[ii] == "E%3a")    {winPath += "E:\\\\"; continue;}
+
+        winPath += fpList[ii];
+        if (ii < fpList.length -1 && ii > 3) {winPath += "\\\\";}
+        
+    }
+
+    return winPath;
+}
+
