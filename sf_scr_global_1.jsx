@@ -11,8 +11,13 @@ var ftgMP_LL_08       // "ftgMP_LL_08.mov"
 var mainCompList = [];
 var bgCompList   = [];
 
-var filePathUrl = [];
+var filePathUrl  = [];
+var filePathUrlA = [];
+var filePathUrlB = [];
+
 var fileName    = [];
+var fileNameA    = [];
+var fileNameB    = [];
 
 var fileWidth   = [];
 var fileHeight  = [];
@@ -26,11 +31,17 @@ var compHeight  = 2160;
 var bgGaussianBlur  = 200;
 var bgOpacity       = 25; // 50;
 
+//var addOpacityKeys = [
+//    0,
+//    0.9,
+//    4,
+//    4.1];
+
 var addOpacityKeys = [
     0,
     0.9,
     4,
-    4.1];
+    4.8];
 
 var addOpacityVal = [
     25,
@@ -45,7 +56,7 @@ var addOpacityBi1Keys = [
     1,
     4,
     4.1,
-    4.24];
+    4.8];
 
 var addOpacityBi1Val = [
     100,
@@ -60,6 +71,20 @@ var addOpacityBi1Val = [
 var propRotExp = "Math.sin(time%900*2)*-0.31"
 
 
+//var addropertyKeys=[
+//0,
+//0.5,
+//1,
+//1.5,
+//2,
+//2.5,
+//3,
+//3.5,
+//4,
+//4.5,
+//5];
+
+
 var addropertyKeys=[
 0,
 0.5,
@@ -71,7 +96,7 @@ var addropertyKeys=[
 3.5,
 4,
 4.5,
-5];
+4.8];
 
 
 
@@ -80,7 +105,7 @@ var addropertyKeys=[
 var addropertyKeysLb=[
 0,     
 2.5,   
-5];    
+4.8];    
 
 var addropertyValLb=[
 1   ,
@@ -91,7 +116,7 @@ var addropertyValLb=[
 var addropertyKeysBl=[ 
 0,    
 3.5,  
-5];   
+4.8];   
 
 
 var addropertyValBl=[
@@ -146,7 +171,7 @@ var addropertyValLb2=[
 var addropertyKeysBl2=[ 
 0,    
 3.5,  
-5];   
+4.8];   
 
 
 var addropertyValBl2=[
@@ -166,7 +191,7 @@ var addropertyKeysLb1=[
 3.5,   
 4,     
 4.5,   
-5];    
+4.8];    
 
 var addropertyValLb1=[
 1   ,
@@ -189,7 +214,7 @@ var addropertyKeysBl1=[
 2.5,  
 3.5,  
 4,    
-5];   
+4.8];   
 
 
 var addropertyValBl1=[

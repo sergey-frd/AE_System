@@ -240,3 +240,15 @@ function createPropertyBi1(comp, videoLayer, curItem)
 
 }
 
+//===================================================
+function createPropertyBiAB1(comp, videoLayer, curItem)
+{
+
+    var scr_scale = Math.max ((Math.round(comp.height*100/curItem.height,2)),(Math.round(comp.width*100/curItem.width,2)))
+    videoLayer.property("Scale").setValue([scr_scale*1,scr_scale*1]);
+    //videoLayer.property("Scale").setValue([scr_scale*3,scr_scale*3]);
+    //videoLayer.property("Opacity").setValuesAtTimes(addOpacityBi1Keys,addOpacityBi1Val);
+
+}
+
+

@@ -76,15 +76,15 @@ function createNewComp_and_Add(prefixList,folderList)
 }
 
 
-
 //===================================================
 function handleCurrentCompAll(indx,Prefix,FlagBigLitle,videoFileItem)
 {
 
     var compNameAll = Prefix + "_All_" + String(indx+1);
     var compNameBi1 = Prefix + "_BI1_" + String(indx+1);
-    var compNameBg  = Prefix + "_BG_" + String(indx+1);
-    var compName    = Prefix + "_" + String(indx+1);
+    var compNameAB1 = Prefix + "_AB1_" + String(indx+1);
+    var compNameBg  = Prefix + "_BG_"  + String(indx+1);
+    var compName    = Prefix + "_"     + String(indx+1);
 
     var newCompAll  = app.project.items.addComp(compNameAll, compWidth, compHeight, 1.0, durationSec, 25);
 
@@ -287,6 +287,8 @@ function handleNewComposit2()
 
         if(videoFileItem !=null )  {
 
+            fileNameA[i] = videoFileItem;
+
             if  (FlagBigLitle  == 0) {
                 FlagBigLitle  = 1; 
             } else {
@@ -383,4 +385,299 @@ function handleNewComposit_V()
     } //    for(var i = 0; i < filePathUrl.length; i++) 
 }
 
+
+//===================================================
+function handleNewCompositB()
+{
+
+    var FlagBigLitle  = 1;        
+    var Prefix       = "GrpB_1"; 
+
+    for(var i = 0; i < filePathUrl.length; i++) {
+
+        lg.writeln(' i= '+ String(i+1) +'  filePathUrl=> ' + filePathUrl[i]);
+
+        var videoFile = File(filePathUrl[i]);
+        var videoFileItem = app.project.importFile(new ImportOptions(videoFile));
+
+        if(videoFileItem !=null )  {
+
+            if  (FlagBigLitle  == 0) {
+                FlagBigLitle  = 1; 
+            } else {
+                FlagBigLitle  = 0; 
+            }             
+            handleCurrentCompAll(i,"GrpB_All",FlagBigLitle,videoFileItem)
+
+            var compNameAll = Prefix + "_All_" + String(i+1);
+            //var compNameBi1 = Prefix + "_BI1_" + String(i+1);
+            //var compNameBg  = Prefix + "_BG_"  + String(i+1);
+            //var compName    = Prefix + "_"     + String(i+1);
+
+
+            var compNameBi1 = Prefix + "_BI1_" + String(i+1);
+            var newCompBi1  = app.project.items.addComp(compNameBi1, compWidth, compHeight, 1.0, durationSec, 25);
+
+            var videoLayerBi1 = newCompBi1.layers.add(videoFileItem);
+            // !! createPropertyBi1(newCompBi1, videoLayerBi1, videoFileItem);
+            createPropertyBiAB1(newCompBi1, videoLayerBi1, videoFileItem);
+
+
+            var compNameBg = Prefix + "_BG_" + String(i+1);
+            var newCompBg  = app.project.items.addComp(compNameBg, compWidth, compHeight, 1.0, durationSec, 25);
+
+            var videoLayerBg = newCompBg.layers.add(videoFileItem);
+            createPropertyBg(newCompBg, videoLayerBg, videoFileItem);
+
+
+            var compName = Prefix + "_" + String(i+1);
+            var newComp = app.project.items.addComp(compName, compWidth, compHeight, 1.0, durationSec, 25);
+            var videoLayer = newComp.layers.add(videoFileItem);
+
+
+            createProperty(newComp, videoLayer, videoFileItem, FlagBigLitle);
+
+            handleParentFoldersB(videoFileItem,compName,compNameBg,compNameBi1,compNameAll);
+            //if ( i > 10 ){break;}
+
+        } //  if(videoFileItem !=null )  
+
+    } //    for(var i = 0; i < filePathUrl.length; i++) 
+}
+
+
+//===================================================
+function handleNewCompositAB()
+{
+
+    var FlagBigLitle  = 1;        
+    var Prefix       = "GrpAB_1"; 
+
+    var lenMin = Math.min (filePathUrlA.length,filePathUrlB.length)
+    lg.writeln('lenMin= ' +  String(lenMin)  );
+
+    i=0
+    lg.writeln(' i= '+ String(i+1) +'  filePathUrl=>  ' + filePathUrl[i]);
+    lg.writeln(' i= '+ String(i+1) +'  filePathUrlA=> ' + filePathUrlA[i]);
+    lg.writeln(' i= '+ String(i+1) +'  filePathUrlB=> ' + filePathUrlB[i]);
+
+
+    for(var i = 0; i < lenMin; i++) {
+
+        lg.writeln(' i= '+ String(i+1) +'  filePathUrl=> ' + filePathUrl[i]);
+
+        var videoFile = File(filePathUrlA[i]);
+        lg.writeln(String(i) + ' videoFile= '  +  String(videoFile)  );
+        //var videoFileItem = app.project.importFile(new ImportOptions(videoFile));
+        var videoFileItem = fileNameA[i];
+
+        //if(videoFileItem !=null && videoFileItemB !=null )  {
+        if(videoFileItem !=null )  {
+
+
+            var videoFileB = File(filePathUrlB[i]);
+            if(videoFileB !=null )  {
+
+
+                lg.writeln(String(i) + ' videoFileB= ' +  String(videoFileB)  );
+                var videoFileItemB = app.project.importFile(new ImportOptions(videoFileB));
+
+                if(videoFileItemB !=null )  {
+
+
+                    if  (FlagBigLitle  == 0) {
+                        FlagBigLitle  = 1; 
+                    } else {
+                        FlagBigLitle  = 0; 
+                    }
+
+                    lg.writeln(String(i) + ' handleCurrentCompAll videoFile= '   +  String(videoFile)  );
+                    lg.writeln(String(i) + ' handleCurrentCompAll videoFileB= '  +  String(videoFileB)  );
+
+                    lg.writeln(String(i) + ' handleCurrentCompAll videoFileItem= '   +  String(videoFileItem)  );
+                    lg.writeln(String(i) + ' handleCurrentCompAll videoFileItemB= '  +  String(videoFileItemB)  );
+
+                    handleCurrentCompAll(i,"GrpAB_All",FlagBigLitle,videoFileItem)
+
+                    //var compNameBi1 = Prefix + "_BI1_" + String(i+1);
+                    //var videoLayerBi1 = newCompBi1.layers.add(videoFileItemB);
+                    //createPropertyBi1(newCompBi1, videoLayerBi1, videoFileItemB);
+
+                    //var compNameBi1 = Prefix + "_AB1_" + String(i+1);
+                    //var newCompBi1  = app.project.items.addComp(compNameBi1, compWidth, compHeight, 1.0, durationSec, 25);
+                    //
+                    //createPropertyBiAB1(newCompBi1, videoLayerBi1, videoFileItemB);
+
+
+                    //var compNameBi1 = Prefix + "_BI1_" + String(i+1);
+                    var compNameAB1 = Prefix + "_AB1_" + String(i+1);
+                    var newCompAB1  = app.project.items.addComp(compNameAB1, compWidth, compHeight, 1.0, durationSec, 25);
+                    
+                    var videoLayerAB1 = newCompBi1.layers.add(videoFileItemB);
+                    createPropertyBi1(newCompAB1, videoLayerAB1, videoFileItemB);
+
+                    // //var compNameBi1 = Prefix + "_BI1_" + String(i+1);
+                    // //var newCompBi1  = app.project.items.addComp(compNameBi1, compWidth, compHeight, 1.0, durationSec, 25);
+                    // //
+                    // //var videoLayerBi1 = newCompBi1.layers.add(videoFileItem);
+                    // //createPropertyBi1(newCompBi1, videoLayerBi1, videoFileItem);
+
+
+                    var compNameBg = Prefix + "_BG_" + String(i+1);
+                    var newCompBg  = app.project.items.addComp(compNameBg, compWidth, compHeight, 1.0, durationSec, 25);
+
+                    var videoLayerBg = newCompBg.layers.add(videoFileItem);
+                    createPropertyBg(newCompBg, videoLayerBg, videoFileItem);
+
+
+                    var compName = Prefix + "_" + String(i+1);
+                    var newComp = app.project.items.addComp(compName, compWidth, compHeight, 1.0, durationSec, 25);
+                    var videoLayer = newComp.layers.add(videoFileItem);
+
+
+                    createProperty(newComp, videoLayer, videoFileItem, FlagBigLitle);
+
+                    var compNameAll = Prefix + "_All_" + String(i+1);
+                    //handleParentFoldersAB(videoFileItem,compNameBi1);
+                    handleParentFoldersB(videoFileItem,compName,compNameBg,compNameAB1,compNameAll)
+                    if ( i > 3 ){break;}
+
+                } //    if(videoFileItemB !=null )  {
+
+            } //if(videoFileB !=null )  {
+
+        } //  if(videoFileItem !=null )  
+
+    } //    for(var i = 0; i < filePathUrl.length; i++) 
+}
+
+
+
+//===================================================
+function handleCurCompAllAB(indx,Prefix,FlagBigLitle,videoFileItem,videoFileItemB)
+{
+
+    var compNameAll = Prefix + "_All_" + String(indx+1);
+    var compNameBi1 = Prefix + "_BI1_" + String(indx+1);
+    var compNameAB1 = Prefix + "_AB1_" + String(indx+1);
+    var compNameBg  = Prefix + "_BG_"  + String(indx+1);
+    var compName    = Prefix + "_"     + String(indx+1);
+
+    var newCompAll  = app.project.items.addComp(compNameAll, compWidth, compHeight, 1.0, durationSec, 25);
+
+    var scr_scaleMin = Math.min ((Math.round(newCompAll.height*100/videoFileItem.height,2)),(Math.round(newCompAll.width*100/videoFileItem.width,2)))
+    var scr_scaleMax = Math.max ((Math.round(newCompAll.height*100/videoFileItem.height,2)),(Math.round(newCompAll.width*100/videoFileItem.width,2)))
+
+    //----------- Bi1 -----------
+    var videoLayerBi1 = newCompAll.layers.add(videoFileItem);
+    createEffectsProperty(videoLayerBi1);
+
+    videoLayerBi1.property("Scale").setValue([scr_scaleMax*2,scr_scaleMax*2]);
+    videoLayerBi1.property("Opacity").setValuesAtTimes(addOpacityBi1Keys,addOpacityBi1Val);
+    createRotationProperty(videoLayerBi1);
+
+
+    //----------- BG A -----------
+    var videoLayerBg = newCompAll.layers.add(videoFileItem);
+    var posHoris =  newCompAll.width/2  
+    var posVert  =  newCompAll.height/2 
+    videoLayerBg.property("Position").setValue([posHoris,posVert]);
+
+    blurEffect = videoLayerBg.Effects.addProperty("ADBE Gaussian Blur 2");
+    blurEffect.property(1).setValue(bgGaussianBlur);
+    videoLayerBg.property("Opacity").setValue(bgOpacity); 
+
+
+    //----------- Base A -----------
+    var videoLayer = newCompAll.layers.add(videoFileItem);
+    createProperty(newCompAll, videoLayer, videoFileItem, FlagBigLitle);
+
+
+    //----------- Base B -----------
+    var videoLayerAll = newCompAll.layers.add(videoFileItemB);
+    createEffectsProperty(videoLayerAll);
+
+
+    videoLayerAll.property("Scale").setValue([scr_scaleMax*1,scr_scaleMax*1]);
+    videoLayerAll.property("Opacity").setValuesAtTimes(addOpacityBi1Keys,addOpacityBi1Val);
+    createRotationProperty(videoLayerAll);
+
+
+
+    // handleParentFoldersAll(compNameAll);
+    handleParentFoldersAllAB(compNameAll,videoFileItemB);
+    //handleParentFolders(videoFileItem,compNameAll,compName,compNameBg,compNameBi1);
+
+}
+
+//===================================================
+function handleComposAB()
+{
+
+    var FlagBigLitle  = 1;        
+    var Prefix       = "GrpAB_1"; 
+
+    var lenMin = Math.min (filePathUrlA.length,filePathUrlB.length)
+    lg.writeln('lenMin= ' +  String(lenMin)  );
+
+    for(var i = 0; i < lenMin; i++) {
+
+        lg.writeln(' i= '+ String(i+1) +'  filePathUrl=> ' + filePathUrl[i]);
+
+        var videoFile = File(filePathUrlA[i]);
+        lg.writeln(String(i) + ' videoFile= '  +  String(videoFile)  );
+        // !!var videoFileItem = app.project.importFile(new ImportOptions(videoFile));
+        var videoFileItem = fileNameA[i];
+
+        //if(videoFileItem !=null && videoFileItemB !=null )  {
+        if(videoFileItem !=null )  {
+
+
+            var videoFileB = File(filePathUrlB[i]);
+            if(videoFileB !=null )  {
+
+
+                lg.writeln(String(i) + ' videoFileB= ' +  String(videoFileB)  );
+                var videoFileItemB = app.project.importFile(new ImportOptions(videoFileB));
+
+                if(videoFileItemB !=null )  {
+
+
+                    if  (FlagBigLitle  == 0) {
+                        FlagBigLitle  = 1; 
+                    } else {
+                        FlagBigLitle  = 0; 
+                    }
+
+                    // lg.writeln(String(i) + ' handleCurrentCompAll videoFile= '   +  String(videoFile)  );
+                    // lg.writeln(String(i) + ' handleCurrentCompAll videoFileB= '  +  String(videoFileB)  );
+
+                    // lg.writeln(String(i) + ' handleCurrentCompAll videoFileItem= '   +  String(videoFileItem)  );
+                    // lg.writeln(String(i) + ' handleCurrentCompAll videoFileItemB= '  +  String(videoFileItemB)  );
+
+                    // //var compNameBi1 = Prefix + "_BI1_" + String(i+1);
+                    // var compNameBi1 = Prefix + "_AB1_" + String(i+1);
+                    // var newCompBi1  = app.project.items.addComp(compNameBi1, compWidth, compHeight, 1.0, durationSec, 25);
+                    
+
+
+                    //var videoLayerB = newCompBi1.layers.add(videoFileItemB);
+                    //var videoLayerA = newCompBi1.layers.add(videoFileItem);
+
+                    //handleCurCompAllAB(indx,Prefix,FlagBigLitle,videoFileItem,videoFileItemB)
+                    handleCurCompAllAB(i,Prefix,FlagBigLitle,videoFileItem,videoFileItemB)
+
+
+
+
+                    // if ( i > 3 ){break;}
+
+                } //    if(videoFileItemB !=null )  {
+
+            } //if(videoFileB !=null )  {
+
+        } //  if(videoFileItem !=null )  
+
+    } //    for(var i = 0; i < filePathUrl.length; i++) 
+}
 

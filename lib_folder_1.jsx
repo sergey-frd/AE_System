@@ -46,6 +46,69 @@ function handleFolders_V()
 }
 
 //===================================================
+function handleFoldersAB() 
+{
+
+    var compPRECOMP_GRPALL_1   = findItem("PRECOMP_GRPALL_AB1","FldItm");
+    if(compPRECOMP_GRPALL_1 !=null )  { compPRECOMP_GRPALL_1.remove(); }
+    var compPRECOMP_GRPALL_1  = app.project.items.addFolder("PRECOMP_GRPALL_AB1");
+
+    compPRECMP = findItem("_PRECMPS","FldItm");
+    if(compPRECOMP_GRPALL_1  !=null )  { compPRECOMP_GRPALL_1.parentFolder  = compPRECMP; }
+
+}
+
+//===================================================
+function handleFoldersB() 
+{
+
+
+    comp_PRJ   = findItem("_PRJ","FldItm");
+    compCOMPS  = findItem("COMPS","FldItm");
+    compPRECMP = findItem("_PRECMPS","FldItm");
+
+    compFTGB    = findItem("03_FOOTAGES","FldItm");
+    if(compFTGB !=null )  { compFTGB.remove(); }
+    var compFTG       = app.project.items.addFolder("03_FOOTAGES");
+
+    compF_COMP_FINAL   = findItem("COMP_FINAL","FldItm");
+    if(compF_COMP_FINAL !=null )  { compF_COMP_FINAL.remove(); }
+
+    compF_FTG_GRP_1   = findItem("FTG_GRP_B1","FldItm");
+    if(compF_FTG_GRP_1 !=null )  { compF_FTG_GRP_1.remove(); }
+
+    var compPRECOMP_GRP_1      = findItem("PRECOMP_GRP_B1","FldItm");
+    var compPRECOMP_GRPBI1_1   = findItem("PRECOMP_GRPBI1_B1","FldItm");
+    var compPRECOMP_GRPALL_1   = findItem("PRECOMP_GRPALL_B1","FldItm");
+
+    if(compPRECOMP_GRP_1    !=null )  { compPRECOMP_GRP_1.remove(); }
+    if(compPRECOMP_GRPBI1_1 !=null )  { compPRECOMP_GRPBI1_1.remove(); }
+    if(compPRECOMP_GRPALL_1 !=null )  { compPRECOMP_GRPALL_1.remove(); }
+
+
+    var compF_FTG_GRP_1       = app.project.items.addFolder("FTG_GRP_B1");
+    var compPRECOMP_GRP_1     = app.project.items.addFolder("PRECOMP_GRP_B1");
+    var compPRECOMP_GRPBG_1   = app.project.items.addFolder("PRECOMP_GRPBG_B1");
+    var compPRECOMP_GRPBI1_1  = app.project.items.addFolder("PRECOMP_GRPBI1_B1");
+    var compPRECOMP_GRPALL_1  = app.project.items.addFolder("PRECOMP_GRPALL_B1");
+    var compF_COMP_FINAL      = app.project.items.addFolder("COMP_FINAL");
+
+    compF_COMP_FINAL   = findItem("COMP_FINAL","FldItm");
+    if(compF_COMP_FINAL !=null )  { compF_COMP_FINAL.parentFolder = compCOMPS; }
+
+    compFTG    = findItem("03_FOOTAGES","FldItm");
+    if(compF_FTG_GRP_1 !=null )  { compF_FTG_GRP_1.parentFolder = compFTG; }
+
+    compPRECMP = findItem("_PRECMPS","FldItm");
+    if(compPRECOMP_GRP_1     !=null )  { compPRECOMP_GRP_1.parentFolder     = compPRECMP;  }
+    if(compPRECOMP_GRPBG_1   !=null )  { compPRECOMP_GRPBG_1.parentFolder   = compPRECMP;  }
+    if(compPRECOMP_GRPBI1_1  !=null )  { compPRECOMP_GRPBI1_1.parentFolder  = compPRECMP; }
+    if(compPRECOMP_GRPALL_1  !=null )  { compPRECOMP_GRPALL_1.parentFolder  = compPRECMP; }
+
+}
+
+
+//===================================================
 function handleFolders() 
 {
 
@@ -94,6 +157,22 @@ function handleFolders()
 
 //=============================================================================
 
+function handleParentFoldersAllAB(compNameAll,videoFileItemB)
+{
+
+    var compPRECOMP_GRPALL_1   = findItem("PRECOMP_GRPALL_AB1","FldItm");
+    itmCompNameAll = findItem(compNameAll,"CmpItm");
+    if(itmCompNameAll  !=null )  { itmCompNameAll.parentFolder  = compPRECOMP_GRPALL_1}
+
+    compF_FTG_GRP_1   = findItem("FTG_GRP_B1","FldItm");
+    //if(videoFileItem !=null )  { videoFileItem.parentFolder = compF_FTG_GRP_1; }
+    if(compF_FTG_GRP_1 !=null && videoFileItemB !=null)  {videoFileItemB.parentFolder = compF_FTG_GRP_1; }
+
+
+}
+
+//=============================================================================
+
 function handleParentFoldersAll(compNameAll)
 {
 
@@ -101,10 +180,43 @@ function handleParentFoldersAll(compNameAll)
     itmCompNameAll = findItem(compNameAll,"CmpItm");
     if(itmCompNameAll  !=null )  { itmCompNameAll.parentFolder  = compPRECOMP_GRPALL_1}
 
+
+    compF_FTG_GRP_1   = findItem("FTG_GRP_B1","FldItm");
+    //if(videoFileItem !=null )  { videoFileItem.parentFolder = compF_FTG_GRP_1; }
+    if(compF_FTG_GRP_1 !=null && videoFileItem !=null)  {videoFileItem.parentFolder = compF_FTG_GRP_1; }
+
+
 }
 
 //=============================================================================
 
+function handleParentFoldersAB(videoFileItem,compNameBi1)
+{
+
+    // compF_FTG_GRP_1   = findItem("FTG_GRP_1","FldItm");
+    // //if(videoFileItem !=null )  { videoFileItem.parentFolder = compF_FTG_GRP_1; }
+    // if(compF_FTG_GRP_1 !=null && videoFileItem !=null)  {videoFileItem.parentFolder = compF_FTG_GRP_1; }
+    // 
+    // compPRECOMP_GRP_1 = findItem("PRECOMP_GRP_1","FldItm");
+    // itmCompName  = findItem(compName,"CmpItm");
+    // if(itmCompName !=null )  { itmCompName.parentFolder  = compPRECOMP_GRP_1; }
+    // 
+    // compPRECOMP_GRPBG_1   = findItem("PRECOMP_GRPBG_1","FldItm");
+    // itmCompNameBg  = findItem(compNameBg,"CmpItm");
+    // if(itmCompNameBg !=null )  { itmCompNameBg.parentFolder  = compPRECOMP_GRPBG_1; }
+
+    var compPRECOMP_GRPBI1_1   = findItem("PRECOMP_GRPALL_AB1","FldItm");
+    itmCompNameBi1 = findItem(compNameBi1,"CmpItm");
+    if(itmCompNameBi1  !=null )  { itmCompNameBi1.parentFolder  = compPRECOMP_GRPBI1_1}
+
+    //var compPRECOMP_GRPALL_1   = findItem("PRECOMP_GRPALL_1","FldItm");
+    //itmCompNameAll = findItem(compNameAll,"CmpItm");
+    //if(itmCompNameAll  !=null )  { itmCompNameAll.parentFolder  = compPRECOMP_GRPALL_1}
+
+
+}
+
+//=============================================================================
 function handleParentFolders(videoFileItem,compName,compNameBg,compNameBi1)
 {
 
@@ -129,6 +241,34 @@ function handleParentFolders(videoFileItem,compName,compNameBg,compNameBi1)
     //if(itmCompNameAll  !=null )  { itmCompNameAll.parentFolder  = compPRECOMP_GRPALL_1}
 
 }
+
+//=============================================================================
+
+function handleParentFoldersB(videoFileItem,compName,compNameBg,compNameBi1,compNameAll)
+{
+
+    compF_FTG_GRP_1   = findItem("FTG_GRP_B1","FldItm");
+    //if(videoFileItem !=null )  { videoFileItem.parentFolder = compF_FTG_GRP_1; }
+    if(compF_FTG_GRP_1 !=null && videoFileItem !=null)  {videoFileItem.parentFolder = compF_FTG_GRP_1; }
+
+    compPRECOMP_GRP_1 = findItem("PRECOMP_GRP_B1","FldItm");
+    itmCompName  = findItem(compName,"CmpItm");
+    if(itmCompName !=null )  { itmCompName.parentFolder  = compPRECOMP_GRP_1; }
+
+    compPRECOMP_GRPBG_1   = findItem("PRECOMP_GRPBG_B1","FldItm");
+    itmCompNameBg  = findItem(compNameBg,"CmpItm");
+    if(itmCompNameBg !=null )  { itmCompNameBg.parentFolder  = compPRECOMP_GRPBG_1; }
+
+    var compPRECOMP_GRPBI1_1   = findItem("PRECOMP_GRPBI1_B1","FldItm");
+    itmCompNameBi1 = findItem(compNameBi1,"CmpItm");
+    if(itmCompNameBi1  !=null )  { itmCompNameBi1.parentFolder  = compPRECOMP_GRPBI1_1}
+
+    var compPRECOMP_GRPALL_1   = findItem("PRECOMP_GRPALL_B1","FldItm");
+    itmCompNameAll = findItem(compNameAll,"CmpItm");
+    if(itmCompNameAll  !=null )  { itmCompNameAll.parentFolder  = compPRECOMP_GRPALL_1}
+
+}
+
 
 
 //===================================================
