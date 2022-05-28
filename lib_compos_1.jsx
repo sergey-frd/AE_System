@@ -110,7 +110,9 @@ function handleCurrentCompAll(indx,Prefix,FlagBigLitle,videoFileItem)
 
    blurEffect = videoLayerBg.Effects.addProperty("ADBE Gaussian Blur 2");
    blurEffect.property(1).setValue(bgGaussianBlur);
-   videoLayerBg.property("Opacity").setValue(bgOpacity); 
+   createEffectsProperty(videoLayerBg);
+   // videoLayerBg.property("Opacity").setValue(bgOpacity); 
+   videoLayerBg.property("Opacity").setValuesAtTimes(addBgOpacityKeys,addBgOpacityVal);
 
    var videoLayer = newCompAll.layers.add(videoFileItem);
    createProperty(newCompAll, videoLayer, videoFileItem, FlagBigLitle);

@@ -37,6 +37,13 @@ var bgOpacity       = 25; // 50;
 //    4,
 //    4.1];
 
+var addBgOpacityKeys = [
+    0];
+
+var addBgOpacityVal = [
+    25];
+
+
 var addOpacityKeys = [
     0,
     0.9,
