@@ -41,7 +41,7 @@ var addBgOpacityKeys = [
     0];
 
 var addBgOpacityVal = [
-    25];
+    50];
 
 
 var addOpacityKeys = [
@@ -51,10 +51,114 @@ var addOpacityKeys = [
     4.8];
 
 var addOpacityVal = [
-    25,
+    50,
     100,
     100,
-    25];
+    50];
+
+
+
+var addOpacityKeys100 = [
+    0,
+    0.9,
+    4,
+    4.8];
+
+var addOpacityVal100 = [
+    100,
+    100,
+    100,
+    0];
+
+
+var addOpacityKeys100_25 = [
+    0,
+    0.9,
+    4,
+    4.8];
+
+var addOpacityVal100_25 = [
+    100,
+    100,
+    100,
+    50];
+
+
+var addOpacityKeys_25_100 = [
+    0,
+    0.9,
+    4,
+    4.8];
+
+var addOpacityVal_25_100 = [
+    50,
+    50,
+    50,
+    100];
+
+
+var addOpacityKeys_0_25_100 = [
+    0,
+    0.9,
+    4,
+    4.8];
+
+var addOpacityVal_0_25_100 = [
+    0,
+    50,
+    100,
+    100];
+
+
+var addOpacityKeys_1_25_100 = [
+    0,
+    0.9,
+    4,
+    4.8];
+
+var addOpacityVal_1_25_100 = [
+    100,
+    50,
+    0,
+    0];
+
+
+
+
+var addOpacityBi1Keys_0 = [
+    0,
+    0.9,
+    1,
+    4,
+    4.1,
+    4.8];
+
+var addOpacityBi1Val_0 = [
+    100,
+    100,
+    0,
+    0,
+    0,
+    0];
+
+
+
+var addOpacityBi1Keys_1 = [
+    0,
+    0.9,
+    1,
+    4,
+    4.1,
+    4.8];
+
+var addOpacityBi1Val_1 = [
+    0,
+    0,
+    0,
+    0,
+    100,
+    100];
+
 
 
 var addOpacityBi1Keys = [

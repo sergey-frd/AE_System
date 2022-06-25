@@ -251,4 +251,71 @@ function createPropertyBiAB1(comp, videoLayer, curItem)
 
 }
 
+//===================================================
+function createEffectsProperty3(videoLayer)
+{
+    var EffAutoColor      = videoLayer.property("Effects").addProperty("Auto Color");
+    var EffAutoContrast   = videoLayer.property("Effects").addProperty("Auto Contrast");
+    var EffAutoLevels     = videoLayer.property("Effects").addProperty("Auto Levels");
+    var EffBrContr        = videoLayer.property("Effects").addProperty("Brightness & Contrast");
+    var EffCurves         = videoLayer.property("Effects").addProperty("Curves");
+    //var EffLumetri        = videoLayer.property("Effects").addProperty("ADBE Lumetri");
+}
+
+//===================================================
+function createProperty3(comp, videoLayer, curItem, FlagBigLitle)
+{
+
+    
+    var random = Math.round(Math.random());
+
+    // if(random == 0) {createScaleProperty(comp, videoLayer, curItem, FlagBigLitle);}
+    // else {createScaleProperty2(comp, videoLayer, curItem, FlagBigLitle);}
+            
+    createScaleProperty2(comp, videoLayer, curItem, FlagBigLitle);
+    //createScaleProperty(comp, videoLayer, curItem, FlagBigLitle);
+
+    createPositionProperty(comp, videoLayer, FlagBigLitle);
+
+    // createOpacityProperty(videoLayer);
+    // videoLayer.property("Opacity").setValuesAtTimes(addOpacityKeys100,addOpacityVal100);
+    videoLayer.property("Opacity").setValuesAtTimes(addOpacityKeys100_25,addOpacityVal100_25);
+
+
+
+
+    if (rotationEnable  == 1 ){createRotationProperty(videoLayer);}
+
+    createEffectsProperty3(videoLayer);
+
+    // !!! prop.setTemporalEaseAtKey(s, array[i]["KITE"][t], array[i]["KOTE"][t]); 
+}
+
+//===================================================
+function createProperty4(comp, videoLayer, curItem, FlagBigLitle)
+{
+
+    
+    var random = Math.round(Math.random());
+
+    // if(random == 0) {createScaleProperty(comp, videoLayer, curItem, FlagBigLitle);}
+    // else {createScaleProperty2(comp, videoLayer, curItem, FlagBigLitle);}
+            
+    createScaleProperty2(comp, videoLayer, curItem, FlagBigLitle);
+    //createScaleProperty(comp, videoLayer, curItem, FlagBigLitle);
+
+    createPositionProperty(comp, videoLayer, FlagBigLitle);
+
+    // createOpacityProperty(videoLayer);
+    videoLayer.property("Opacity").setValuesAtTimes(addOpacityKeys100_25,addOpacityVal100_25);
+
+
+
+
+    if (rotationEnable  == 1 ){createRotationProperty(videoLayer);}
+
+    createEffectsProperty3(videoLayer);
+
+    // !!! prop.setTemporalEaseAtKey(s, array[i]["KITE"][t], array[i]["KOTE"][t]); 
+}
 
