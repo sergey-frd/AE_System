@@ -318,4 +318,64 @@ function createProperty4(comp, videoLayer, curItem, FlagBigLitle)
 
     // !!! prop.setTemporalEaseAtKey(s, array[i]["KITE"][t], array[i]["KOTE"][t]); 
 }
+//===================================================
+function createProperty5(comp, videoLayer, curItem, FlagBigLitle)
+{
+
+    
+    var random = Math.round(Math.random());
+
+    createScaleProperty3(comp, videoLayer, curItem, FlagBigLitle);
+
+    createPositionProperty2(comp, videoLayer, FlagBigLitle);
+
+    videoLayer.property("Opacity").setValuesAtTimes(addOpacityKeys100_25,addOpacityVal100_25);
+
+    if (rotationEnable  == 1 ){createRotationProperty(videoLayer);}
+
+    createEffectsProperty3(videoLayer);
+
+}
+//===================================================
+function createPositionProperty2(comp, videoLayer, FlagBigLitle)
+{
+
+    var posHoris =  comp.width/2;
+    var posVert  =  comp.height/2; 
+    var keyProperty = videoLayer.property("Position")
+
+    if  (FlagBigLitle  == 0) {
+        varKeyProp = keyProperty.setValueAtTime(0,           [posHoris,posVert]);
+
+      } else {
+        //varKeyProp = keyProperty.setValueAtTime(durationSec, [posHoris,posVert]);
+        varKeyProp   = keyProperty.setValueAtTime(durationSec_4_8, [posHoris,posVert]);
+    }
+}
+//===================================================
+function createScaleProperty3(comp, videoLayer, curItem, FlagBigLitle)
+{
+
+    var keyProperty = videoLayer.property("Scale")
+    var scr_scale = Math.min ((Math.round(comp.height*100/curItem.height,2)),(Math.round(comp.width*100/curItem.width,2)))
+    var max_scale = scr_scale * 1.618;
+
+    if  (FlagBigLitle  == 0) {
+
+        for (var i = 0; i < addropertyKeys.length; i++ ) {
+
+            if(addropertyKeysLb[i] != undefined && addropertyValLb[i] != undefined ){
+                varKeyProp = videoLayer.property("Scale").setValueAtTime(addropertyKeysLb[i], [addropertyValLb[i]*scr_scale*1,addropertyValLb[i]*scr_scale*1]);
+            }
+        } //    for (var i = 0; i <= addropertyKeys.length; i++ ) {
+
+    } else {
+
+        for (var i = 0; i < addropertyKeys.length; i++ ) {
+            if(addropertyKeysB2[i] != undefined && addropertyKeysB2[i] != undefined ){
+                varKeyProp = videoLayer.property("Scale").setValueAtTime(addropertyKeysB2[i], [addropertyValB2[i]*max_scale,addropertyValB2[i]*max_scale]);
+            }
+        } //    for (var i = 0; i <= addropertyKeys.length; i++ ) {
+    }
+}
 

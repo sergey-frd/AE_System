@@ -539,4 +539,36 @@ function handleFinalCompAllAB(compFinalName)
 
 }
 
+//===================================================
+function handleFinalCompAll_Bg(compFinalName)
+{
+    //var compFinalName = "aeFinalVika_1";
+    var Prefix       = "Grp_A_Bg"; 
+    var time = 0;
+
+
+    // lg.writeln('compFinalName= ' +  String(compFinalName)  );
+    // lg.writeln('compWidth= ' +  String(compWidth)  );
+    // lg.writeln('compHeight= ' +  String(compHeight)  );
+    // lg.writeln('durationSec= ' +  String(durationSec)  );
+    // lg.writeln('filePathUrl.length= ' +  String(filePathUrl.length)  );
+    // lg.writeln('filePathUrl.length*durationSec= ' +  String(filePathUrl.length*durationSec)  );
+
+
+
+    var finalComp = app.project.items.addComp(compFinalName, compWidth, compHeight, 1.0, filePathUrl.length*durationSec, 25);
+    for(var i = 0; i < filePathUrl.length; i++) {
+    
+    
+        var compNameAll = Prefix + "_All_" + String(i+1);
+    
+        var c1  = findItem(compNameAll,"CmpItm");
+        if(c1 !=null ) {  
+            p1 = finalComp.layers.add(c1); p1.startTime = time;  time += c1.duration; 
+            //time += c1.duration;
+        } // if(c1 !=null )
+    
+    } //    for(var i = 0; i < filePathUrl.length; i++) 
+
+}
 

@@ -390,7 +390,9 @@ function handleNewComposit4()
             }             
             //handleNewCompositAll(i,videoFileItem,FlagBigLitle);
             //handleCurrentCompAll3(i,"Grp_All",FlagBigLitle,videoFileItem)
-              handleCurrentCompAll4(i,"Grp_All",FlagBigLitle,videoFileItem)
+            handleCurrentCompAll4(i,"Grp_All",FlagBigLitle,videoFileItem)
+
+            handleCurrentCompAll5(i,"Grp_A_Bg",FlagBigLitle,videoFileItem)
 
 
 
@@ -479,7 +481,7 @@ function handleCurrentCompAll4(indx,Prefix,FlagBigLitle,videoFileItem)
         //videoLayer.property("Opacity").setValuesAtTimes(addOpacityBi1Keys_0,addOpacityBi1Val_0);
         videoLayerBg.property("Opacity").setValuesAtTimes(addOpacityKeys_0_25_100,addOpacityVal_0_25_100);
     } else {
-        videoLayerBg.property("Opacity").setValuesAtTimes(addOpacityKeys_1_25_100,addOpacityVal_1_25_100);
+        videoLayerBg.property("Opacity").setValuesAtTimes(addOpacityKeys_1_75_100,addOpacityVal_1_75_100);
     }
 
 
@@ -489,7 +491,80 @@ function handleCurrentCompAll4(indx,Prefix,FlagBigLitle,videoFileItem)
 
     //----------- Base A -----------
    var videoLayer = newCompAll.layers.add(videoFileItem);
-   createProperty3(newCompAll, videoLayer, videoFileItem, FlagBigLitle);
+   createProperty5(newCompAll, videoLayer, videoFileItem, FlagBigLitle);
+   //lumetriMainEffect = videoLayer.Effects.addProperty("ADBE Lumetri");
+
+    //------------------------------------------
+   handleParentFoldersAll(compNameAll);
+   //handleParentFolders(videoFileItem,compNameAll,compName,compNameBg,compNameBi1);
+
+}
+
+//=====================================================================================================
+//
+function handleCurrentCompAll5(indx,Prefix,FlagBigLitle,videoFileItem)
+{
+
+    var compNameAll = Prefix + "_All_" + String(indx+1);
+    var compNameBi1 = Prefix + "_BI1_" + String(indx+1);
+    var compNameAB1 = Prefix + "_AB1_" + String(indx+1);
+    var compNameBg  = Prefix + "_BG_"  + String(indx+1);
+    var compName    = Prefix + "_"     + String(indx+1);
+
+    // //----------- Bi1 -----------
+    var newCompAll  = app.project.items.addComp(compNameAll, compWidth, compHeight, 1.0, durationSec, 25);
+    
+    //var videoLayerAll = newCompAll.layers.add(videoFileItem);
+    //createEffectsProperty3(videoLayerAll);
+    //CurvesEffect = videoLayerAll.Effects.addProperty("ADBE CurvesCustom");
+    //lumetriEffect = videoLayerAll.Effects.addProperty("ADBE Lumetri");
+    
+    var scr_scaleMin = Math.min ((Math.round(newCompAll.height*100/videoFileItem.height,2)),(Math.round(newCompAll.width*100/videoFileItem.width,2)))
+    var scr_scaleMax = Math.max ((Math.round(newCompAll.height*100/videoFileItem.height,2)),(Math.round(newCompAll.width*100/videoFileItem.width,2)))
+    // 
+    // //videoLayerAll.property("Scale").setValue([scr_scaleMax*3,scr_scaleMax*3]);
+    // videoLayerAll.property("Scale").setValue([scr_scaleMax*2,scr_scaleMax*2]);
+    // 
+    // 
+    // //videoLayerAll.property("Opacity").setValuesAtTimes(addOpacityBi1Keys,addOpacityBi1Val);
+    // if  (FlagBigLitle  == 0) {
+    //     videoLayerAll.property("Opacity").setValuesAtTimes(addOpacityBi1Keys_0,addOpacityBi1Val_0);
+    // } else {
+    //     videoLayerAll.property("Opacity").setValuesAtTimes(addOpacityBi1Keys_1,addOpacityBi1Val_1);
+    // }
+    // 
+    // createRotationProperty(videoLayerAll);
+
+
+    //----------- BG A -----------
+    //var newCompAll  = app.project.items.addComp(compNameAll, compWidth, compHeight, 1.0, durationSec, 25);
+    var videoLayerBg = newCompAll.layers.add(videoFileItem);
+    var posHoris =  newCompAll.width/2  
+    var posVert  =  newCompAll.height/2 
+    videoLayerBg.property("Position").setValue([posHoris,posVert]);
+    videoLayerBg.property("Scale").setValue([scr_scaleMax*2,scr_scaleMax*2]);
+
+    blurEffect = videoLayerBg.Effects.addProperty("ADBE Gaussian Blur 2");
+    blurEffect.property(1).setValue(bgGaussianBlur);
+    createEffectsProperty(videoLayerBg);
+
+    videoLayerBg.property("Opacity").setValue(bgOpacity_75); 
+    // // videoLayerBg.property("Opacity").setValue(bgOpacity); 
+    // //videoLayerBg.property("Opacity").setValuesAtTimes(addBgOpacityKeys,addBgOpacityVal);
+    // //videoLayerBg.property("Opacity").setValuesAtTimes(addOpacityKeys_25_100,addOpacityVal_25_100);
+    // if  (FlagBigLitle  == 0) {
+    //     //videoLayer.property("Opacity").setValuesAtTimes(addOpacityBi1Keys_0,addOpacityBi1Val_0);
+    //     videoLayerBg.property("Opacity").setValuesAtTimes(addOpacityKeys_0_25_100,addOpacityVal_0_25_100);
+    // } else {
+    //     videoLayerBg.property("Opacity").setValuesAtTimes(addOpacityKeys_1_75_100,addOpacityVal_1_75_100);
+    // }
+
+    if (rotationEnable  == 1 ){createRotationProperty(videoLayerBg);}
+
+
+    //----------- Base A -----------
+   var videoLayer = newCompAll.layers.add(videoFileItem);
+   createProperty5(newCompAll, videoLayer, videoFileItem, FlagBigLitle);
    //lumetriMainEffect = videoLayer.Effects.addProperty("ADBE Lumetri");
 
     //------------------------------------------
