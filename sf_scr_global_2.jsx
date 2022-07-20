@@ -79,6 +79,12 @@ var addOpacityVal100 = [
 //    3.88,
 //    4.96];
 
+var addOpacityKeys100_25 = [
+    0,
+    1.12,
+    3.88,
+    4.96];
+
 var addOpacityVal100_25 = [
     100,
     100,
