@@ -1,0 +1,30 @@
+the text with which the name of the directory begins which should not be copied
+
+create Jason a file containing the source directory or the destination directory and 
+a list of texts, with which the names of the directory begins which should not be copied.
+Write a call to a python 3 script from the windows bath file, specifying 
+the Jason file.  Therefore, the script must get the parameters from the 
+Jason file.  Copy all files from the source directory recursively to the 
+destination directory, except for those files that do not need to be 
+copied and whose indication is in the Jason file list.  
+
+
+the text with which the name of the directory to be copied begins
+
+create Jason a file containing the source directory or the destination directory and 
+a list of texts, with which the names of the directory to be copied begins.
+Write a call to a python 3 script from the windows bath file, 
+Copy all files from source directory recursively to
+destination directory whose directories begin with the text specified in the Joyson file
+  Therefore, the script must get the parameters from the 
+Jason file. 
+
+
+
+create Jason a file containing the source directory or the destination directory and 
+a list of texts, with which the names of the directory to be moved begins.
+Write a call to a python 3 script from the windows bath file, 
+Move all files from source directory recursively to destination directory,
+ whose directories begin with the text specified in the Joyson file.
+ Therefore, the script must get the parameters from the 
+Jason file. 

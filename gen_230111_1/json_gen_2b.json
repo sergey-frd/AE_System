@@ -1,0 +1,6 @@
+{
+    "src_dir": "e:\\Git\\video_projects_all\\",
+    "dest_dir": "e:\\Git\\video_projects_new\\",
+    "exclude_strs": ["Adobe Premiere Pro", "Adobe After Effects", "Motion Graphics"]
+}
+
