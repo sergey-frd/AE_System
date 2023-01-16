@@ -1,0 +1,70 @@
+
+-- 1 --
+
+Напиши JavaScript для adobe after effect.
+Скрипт  должен сначала быстро показывать картинку потом медленно
+
+Write JavaScript for adobe after effect.
+The script should first quickly show the picture then slowly
+
+
+
+
+//===================================================
+var comp = app.project.activeItem;
+var layer = comp.layer(1);
+layer.opacity.setValue(100);
+
+var fadeOut = new KeyframeEase(0,50);
+layer.opacity.setValueAtTime(comp.time, 100);
+layer.opacity.setValueAtTime(comp.time + 2, 0);
+layer.opacity.setTemporalEaseAtKey(1, [fadeOut]);
+
+//===================================================
+
+-- 2 --
+
+Напиши JavaScript для adobe after effect.
+Скрипт  должен сначала медленно  показывать картинку потом быстро
+
+Write JavaScript for adobe after effect.
+The script should first slowly  show the picture then quickly
+
+This script assumes that you have a composition named "myComp" 
+and a layer within that composition named "myLayer" that you want to animate the opacity of. 
+The script sets the initial opacity of the layer to 0, 
+and then creates a linear animation from 0 to 100 over the duration of the composition 
+(assuming the composition is 1 second long). 
+The first half second of the animation will be slow and the next half will be fast.
+
+Этот скрипт предполагает, что у вас есть композиция с именем «myComp» и слой внутри этой композиции с именем «myLayer», 
+прозрачность которого вы хотите анимировать. 
+Сценарий устанавливает начальную непрозрачность слоя на 0, 
+а затем создает линейную анимацию от 0 до 100 на протяжении всей композиции 
+(при условии, что композиция длится 1 секунду). 
+Первая половина секунды анимации будет медленной, 
+а следующая половина будет быстрой.
+
+
+//===================================================
+var myComp = app.project.item(1);
+var myLayer = myComp.layer(1);
+myLayer.property("opacity").setValue(0);
+
+var startTime = 0;
+var endTime = 1;
+
+myLayer.property("opacity").setValueAtTime(startTime, 0);
+myLayer.property("opacity").linear(startTime + 0.5, endTime, 100);
+myLayer.property("opacity").setValueAtTime(endTime, 100);
+
+
+//===================================================
+
+-- 3 --
+
+Напиши JavaScript для adobe after effect.
+Этот скрипт предполагает, что у вас есть композиция с именем «myComp» и слой внутри этой композиции с именем «myLayer», 
+
+Auto-Bezier анимацию
+Скрипт  должен сначала медленно  показывать картинку потом быстро

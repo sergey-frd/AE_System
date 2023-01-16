@@ -1,0 +1,79 @@
+﻿Напиши JavaScript для adobe after effect.
+Этот скрипт предполагает, что у вас есть 
+композиция с именем «myComp» и слой внутри 
+этой композиции с именем «myLayer», 
+Сначала картинка должна быть маленькая потом большая
+Переход должен быть выполнен с помощью Auto-Bezier анимации 
+
+var myComp = app.project.item(1);
+var myLayer = myComp.layer(1);
+myLayer.property("Scale").setValue([50,50]);
+
+var startTime = 0;
+var endTime = 1;
+
+myLayer.property("Scale").setValueAtTime(startTime, [50,50]);
+myLayer.property("Scale").autoBezier(startTime, endTime, [100,100]);
+
+   
+
+This script assumes that you have a composition named "myComp" and a layer within that composition named "myLayer" that you want to animate the scale of. 
+The script sets the initial scale of the layer to [50,50], 
+which means that the layer will be scaled to 50% of its original size. 
+Then, it creates an auto-bezier animation that will animate the scale of the layer 
+from [50,50] to [100,100] over the duration of the composition 
+(assuming the composition is 1 second long).
+
+Этот сценарий предполагает, что у вас есть композиция с именем «myComp» и слой внутри этой композиции с именем «myLayer», 
+масштаб которого вы хотите анимировать. 
+Скрипт устанавливает начальный масштаб слоя на [50,50], 
+что означает, что слой будет масштабироваться до 50% от исходного размера. 
+Затем он создает анимацию автоматического безье, 
+которая будет анимировать масштаб слоя от [50,50] до [100,100] 
+в течение продолжительности композиции 
+(при условии, что композиция длится 1 секунду).
+
+
+---------------------------------------
+Java скрипт для Adobe After Effect Какие виды анимации существуют
+
+Java script for Adobe After Effect What types of animation exist
+
+---------------------------------------
+There are several types of animation that exist in Adobe After Effects, including:
+
+Keyframe Animation: This type of animation involves creating keyframes at specific points in time and then adjusting the properties of the layer, such as position, rotation, scale, and opacity, between those keyframes.
+
+Motion Graphics: This type of animation involves creating graphics and animations that move on the screen, such as text, shapes, and logos.
+
+Shape Layers: This type of animation involves creating and animating shapes, such as lines, circles, and polygons, within a composition.
+
+Parenting: This type of animation involves creating a hierarchy between layers, where one layer (the parent) controls the position and transformation of another layer (the child).
+
+Expressions: This type of animation involves using mathematical expressions and scripting to control the properties of a layer, rather than keyframes.
+
+3D Animation: This type of animation allows you to create 3D space and movement in a composition.
+
+Automatic Animation : this type of animation use the built-in animation options such as "easy ease" or "auto bezier" to smooth out the animation
+
+These are some of the most commonly used animation types in Adobe After Effects, but the possibilities are vast and depend on the creativity of the user.
+
+---------------------------------------
+В Adobe After Effects существует несколько типов анимации, в том числе:
+
+Анимация по ключевым кадрам. Этот тип анимации включает создание ключевых кадров в определенные моменты времени, а затем настройку свойств слоя, таких как положение, поворот, масштаб и непрозрачность, между этими ключевыми кадрами.
+
+Анимационная графика. Этот тип анимации включает в себя создание движущихся на экране изображений и анимаций, таких как текст, фигуры и логотипы.
+
+Слои фигур: этот тип анимации включает в себя создание и анимацию фигур, таких как линии, круги и многоугольники, внутри композиции.
+
+Воспитание: Этот тип анимации включает создание иерархии между слоями, где один слой (родительский) управляет положением и трансформацией другого слоя (дочернего).
+
+Выражения: этот тип анимации включает использование математических выражений и сценариев для управления свойствами слоя, а не ключевыми кадрами.
+
+Трехмерная анимация: этот тип анимации позволяет создавать трехмерное пространство и движение в композиции.
+
+Автоматическая анимация: в этом типе анимации используются встроенные параметры анимации, такие как «легкая плавность» или «автоматическая безье», чтобы сгладить анимацию.
+
+Это одни из наиболее часто используемых типов анимации в Adobe After Effects, но их возможности огромны и зависят от творчества пользователя.
+

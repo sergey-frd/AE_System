@@ -1,3 +1,11 @@
+Создай Джейсон файл, который будет содержать исходную или директорию результирующий директорию и список файлов которые не нужно копировать.
+Напиши вызов python 3 скрипта из из windows bath файлa, с указанием Джейсон файла. Поэтому скрипт должен получить параметры из Джейсон файла. Скопировать рекурсивно все файлы из исходной директории в результирующую, кроме тех файлов, которые не нужно копировать и указание которых находится в списке Джейсон файле.
+
+create Jason a file containing the source directory or the destination directory and a list of directories not to be copied.
+Write a call to a python 3 script from the windows bath file, specifying the Jason file. Therefore, the script must get the parameters from the Jason file. Copy all files from the source directory recursively to the destination directory, except for those files that do not need to be copied and whose indication is in the Jason file list.
+
+
+
 the text with which the name of the directory begins which should not be copied
 
 create Jason a file containing the source directory or the destination directory and 
